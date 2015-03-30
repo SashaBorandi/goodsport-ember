@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'brackety-ember',
     environment: environment,
     baseURL: '/',
+    apiNamespace: 'api/v1',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -16,6 +17,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    'simple-auth': {
+      authorizer: 'simple-auth-authorizer:token'
+    },
+
+    'simple-auth-token': {
+      identificationField: 'email',
+      refreshLeeway: 600, // refresh 10 minutes before expiry
+      timeFactor: 1000  // convert incoming seconds to milliseconds.
     }
   };
 
@@ -25,6 +36,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.apiHost = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
@@ -42,6 +55,16 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+
+  ENV.contentSecurityPolicy = {
+    'connect-src': "'self' " + ENV.apiHost
+  };
+
+  ENV['simple-auth'].crossOriginWhitelist = [ENV.apiHost];
+
+  api = ENV.apiHost + '/' + ENV.apiNamespace;
+  ENV['simple-auth-token'].serverTokenEndpoint = api + '/auth';
+  ENV['simple-auth-token'].serverTokenRefreshEndpoint = api + '/auth/refresh';
 
   return ENV;
 };

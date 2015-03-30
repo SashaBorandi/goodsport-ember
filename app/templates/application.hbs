@@ -1,3 +1,10 @@
-<h2 id="title">Welcome to Ember.js</h2>
+{{#link-to 'application'}}<h2 id="title">Brackety</h2>{{/link-to}}
+{{#link-to 'users'}}<h4>Users</h4>{{/link-to}}
+
+{{#if session.isAuthenticated}}
+  <a {{ action 'invalidateSession' }}>Logout</a>
+{{else}}
+  <a {{ action 'authenticateSession' }}>Login</a>
+{{/if}}
 
 {{outlet}}
