@@ -19,6 +19,16 @@ module.exports = function(environment) {
       // when it is created
     },
 
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self'",
+      'connect-src': "'self'",
+      'img-src': "'self'",
+      'style-src': "'self'",
+      'media-src': "'self'"
+    },
+
     'simple-auth': {
       authorizer: 'simple-auth-authorizer:token'
     },
@@ -38,6 +48,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV.apiHost = 'http://localhost:3000';
+    ENV.contentSecurityPolicy['connect-src'] = '*';
+    ENV.contentSecurityPolicy['script-src'] = '*';
   }
 
   if (environment === 'test') {
@@ -56,9 +68,7 @@ module.exports = function(environment) {
 
   }
 
-  ENV.contentSecurityPolicy = {
-    'connect-src': "'self' " + ENV.apiHost
-  };
+  // ENV.contentSecurityPolicy['connect-src'] += ENV.apiHost;
 
   ENV['simple-auth'].crossOriginWhitelist = [ENV.apiHost];
 
