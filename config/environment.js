@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'brackety-ember',
     environment: environment,
     baseURL: '/',
+    apiHost: process.env.API_HOST || 'http://localhost:3000/',
     apiNamespace: 'api/v1',
     locationType: 'auto',
     EmberENV: {
@@ -40,6 +41,11 @@ module.exports = function(environment) {
     }
   };
 
+  var api = ENV.apiHost + ENV.apiNamespace;
+  ENV['simple-auth'].crossOriginWhitelist = [ENV.apiHost];
+  ENV['simple-auth-token'].serverTokenEndpoint = api + '/auth';
+  ENV['simple-auth-token'].serverTokenRefreshEndpoint = api + '/auth/refresh';
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -47,7 +53,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.apiHost = 'http://localhost:3000';
     ENV.contentSecurityPolicy['connect-src'] = '*';
     ENV.contentSecurityPolicy['script-src'] = '*';
   }
@@ -67,14 +72,6 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
-
-  // ENV.contentSecurityPolicy['connect-src'] += ENV.apiHost;
-
-  ENV['simple-auth'].crossOriginWhitelist = [ENV.apiHost];
-
-  api = ENV.apiHost + '/' + ENV.apiNamespace;
-  ENV['simple-auth-token'].serverTokenEndpoint = api + '/auth';
-  ENV['simple-auth-token'].serverTokenRefreshEndpoint = api + '/auth/refresh';
 
   return ENV;
 };
