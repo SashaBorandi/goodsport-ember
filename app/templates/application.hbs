@@ -1,10 +1,22 @@
-{{#link-to 'application'}}<h2 id="title">Brackety</h2>{{/link-to}}
-{{#link-to 'users'}}<h4>Users</h4>{{/link-to}}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      {{#link-to 'index'}}<a class="navbar-brand">Brackety</a>{{/link-to}}
+    </div>
 
-{{#if session.isAuthenticated}}
-  <a {{ action 'invalidateSession' }}>Logout</a>
-{{else}}
-  <a {{ action 'authenticateSession' }}>Login</a>
-{{/if}}
+    {{#if session.isAuthenticated}}
+      <button {{action 'invalidateSession'}} type="button" class="btn btn-default navbar-btn navbar-right">
+        Log out
+      </button>
+      <p class="navbar-text navbar-right">
+        Logged in as Edgar Lee
+      </p>
+    {{else}}
+      <button {{action 'authenticateSession'}} type="button" class="btn btn-default navbar-btn navbar-right">
+        Log in
+      </button>
+    {{/if}}
+  </div>
+</nav>
 
 {{outlet}}
