@@ -1,7 +1,7 @@
 import DS from 'ember-data';
-import Accountable from '../models/accountable';
+import Accountable from '../mixins/accountable';
 
-var User = Accountable.extend({
+var User = DS.Model.extend(Accountable, {
   email: DS.attr('string'),
   firstName: DS.attr('string'),
   lastName: DS.attr('string')

@@ -1,7 +1,7 @@
 import DS from 'ember-data';
-import Accountable from '../models/accountable';
+import Accountable from '../mixins/accountable';
 
-var Organization = Accountable.extend({
+var Organization = DS.Model.extend(Accountable, {
   name: DS.attr('string')
 });
 
