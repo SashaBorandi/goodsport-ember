@@ -1,5 +1,19 @@
 import DS from 'ember-data';
+import Accountable from '../models/accountable';
 
-export default DS.Model.extend({
-  email: DS.attr('string')
+var User = Accountable.extend({
+  email: DS.attr('string'),
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string')
 });
+
+User.reopenClass({
+  FIXTURES: [
+    {
+      id: 1,
+      email: 'edgar@brackety.co'
+    }
+  ]
+});
+
+export default User;
