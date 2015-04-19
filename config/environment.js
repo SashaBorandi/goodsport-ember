@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'brackety-ember',
     environment: environment,
     baseURL: '/',
-    apiHost: process.env.API_HOST || 'http://localhost:3000/',
+    apiHost: process.env.API_HOST || 'http://localhost:3000',
     apiNamespace: 'api/v1',
     locationType: 'auto',
     EmberENV: {
