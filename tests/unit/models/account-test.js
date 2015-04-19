@@ -5,7 +5,7 @@ import {
 
 moduleForModel('account', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['mixin:accountable']
 });
 
 test('it exists', function(assert) {
