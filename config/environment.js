@@ -41,7 +41,7 @@ module.exports = function(environment) {
     }
   };
 
-  var api = ENV.apiHost + ENV.apiNamespace;
+  var api = ENV.apiHost + '/' + ENV.apiNamespace;
   ENV['simple-auth'].crossOriginWhitelist = [ENV.apiHost];
   ENV['simple-auth-token'].serverTokenEndpoint = api + '/auth';
   ENV['simple-auth-token'].serverTokenRefreshEndpoint = api + '/auth/refresh';
