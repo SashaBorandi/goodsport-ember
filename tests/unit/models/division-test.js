@@ -6,6 +6,7 @@ import {
 moduleForModel('division', {
   // Specify the other units that are required for this test.
   needs: [
+    'model:organization',
     'model:competition',
     'model:account',
     'model:user',

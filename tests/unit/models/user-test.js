@@ -8,7 +8,9 @@ moduleForModel('user', {
   needs: [
     'model:account',
     'mixin:accountable',
-    'model:competition',
+    'model:membership',
+    'model:organization',
+    'model:competition'
   ]
 });
 
