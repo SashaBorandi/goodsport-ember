@@ -3,14 +3,12 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForModel('organization', {
+moduleForModel('organizer', {
   // Specify the other units that are required for this test.
   needs: [
     'model:account',
-    'mixin:accountable',
-    'model:organizer',
     'model:user',
-    'model:competition'
+    'model:organization'
   ]
 });
 

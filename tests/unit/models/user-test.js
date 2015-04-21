@@ -7,7 +7,8 @@ moduleForModel('user', {
   // Specify the other units that are required for this test.
   needs: [
     'model:account',
-    'mixin:accountable'
+    'mixin:accountable',
+    'model:competition',
   ]
 });
 

@@ -8,6 +8,15 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.resource('accounts', { path: '/:account_username' }, function() {
+    this.resource('competitions', { path: '/:competition_slug' }, function() {
+      this.resource('divisions', { path: '/:division_slug' },  function() {
+        this.resource('matches', function() {
+        });
+      });
+    });
+
+    // Organization Routes
+    this.resource('organizers', function() {});
   });
 });
 
