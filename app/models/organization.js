@@ -3,6 +3,8 @@ import Accountable from '../mixins/accountable';
 
 var Organization = DS.Model.extend(Accountable, {
   memberships: DS.hasMany('membership'),
+
+  title: DS.attr('string')
 });
 
 Organization.reopenClass({
