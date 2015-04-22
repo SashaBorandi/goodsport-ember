@@ -16,7 +16,7 @@ Router.map(function() {
     });
 
     // Organization Routes
-    this.route('member');
+    this.route('members');
   });
 });
 
