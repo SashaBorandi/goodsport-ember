@@ -5,7 +5,12 @@ import {
 
 moduleForModel('account', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:account']
+  needs: [
+    'serializer:account',
+    'mixin:accountable',
+    'model:competition',
+    'model:division'
+  ]
 });
 
 // Replace this with your real tests.

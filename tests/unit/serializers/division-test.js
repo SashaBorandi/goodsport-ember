@@ -5,7 +5,14 @@ import {
 
 moduleForModel('division', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:division']
+  needs: [
+    'serializer:division',
+    'model:organization',
+    'model:competition',
+    'model:account',
+    'model:user',
+    'model:match'
+  ]
 });
 
 // Replace this with your real tests.
