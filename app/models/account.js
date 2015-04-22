@@ -4,24 +4,24 @@ var Account = DS.Model.extend({
   owner: DS.belongsTo('accountable', { polymorphic: true, async: true }),
   competitions: DS.hasMany('competition', { async: true }),
 
-  username: DS.attr('string')
+  username: function() {
+    return this.get('id');
+  }.property('id')
 });
 
 Account.reopenClass({
   FIXTURES: [
     {
-      id: 1,
+      id: 'hinshun',
       owner: 1,
       ownerType: 'user',
-      competitions: [1],
-      username: 'hinshun'
+      competitions: ['hinshun.championship']
     },
     {
-      id: 2,
+      id: 'utbc',
       owner: 1,
       ownerType: 'organization',
-      competitions: [],
-      username: 'utbc'
+      competitions: []
     }
   ]
 });

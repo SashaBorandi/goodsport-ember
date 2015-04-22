@@ -1,18 +1,16 @@
 import DS from 'ember-data';
+import Sluggable from '../mixins/sluggable';
 
-var Competition = DS.Model.extend({
+var Competition = DS.Model.extend(Sluggable, {
   account: DS.belongsTo('account'),
-  divisions: DS.hasMany('division'),
-
-  slug: DS.attr('string')
+  divisions: DS.hasMany('division')
 });
 
 Competition.reopenClass({
   FIXTURES: [
     {
-      id: 1,
-      account: 1,
-      slug: 'hello-world'
+      id: 'hinshun.championship',
+      account: 'hinshun'
     }
   ]
 });

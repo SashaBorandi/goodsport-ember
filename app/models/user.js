@@ -13,7 +13,10 @@ User.reopenClass({
   FIXTURES: [
     {
       id: 1,
-      email: 'edgar@brackety.co'
+      memberships: [],
+      email: 'edgar@brackety.co',
+      firstName: 'Edgar',
+      lastName: 'Lee'
     }
   ]
 });
