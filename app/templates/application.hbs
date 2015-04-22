@@ -1,21 +1,24 @@
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <div class="container">
     <div class="navbar-header">
       {{#link-to 'index'}}<a class="navbar-brand">Brackety</a>{{/link-to}}
     </div>
 
-    {{#if session.isAuthenticated}}
-      <button {{action 'invalidateSession'}} type="button" class="btn btn-default navbar-btn navbar-right">
-        Log out
-      </button>
-      <p class="navbar-text navbar-right">
-        Logged in as Edgar Lee
-      </p>
-    {{else}}
-      <button {{action 'authenticateSession'}} type="button" class="btn btn-default navbar-btn navbar-right">
-        Log in
-      </button>
-    {{/if}}
+    <ul class="nav navbar-nav navbar-right">
+      {{#if session.isAuthenticated}}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Logged in as Edgar Lee <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#" {{action 'invalidateSession'}}>Log out</a></li>
+          </ul>
+        </li>
+      {{else}}
+        <li><a href="#" {{action 'authenticateSession'}}>Log in</a></li>
+      {{/if}}
+    </ul>
   </div>
 </nav>
 
