@@ -4,7 +4,13 @@ export default Ember.Route.extend({
   model: function(params) {
     return this.store.find('division', { slug: params.division_slug })
       .then(function(divisions) {
-        return divisions.get('firstObject');
+        var division = divisions.get('firstObject');
+        if (!division) {
+          throw new Error('No division with slug ' +
+                          params.division_slug + ' found');
+        }
+
+        return division;
       });
   },
 
