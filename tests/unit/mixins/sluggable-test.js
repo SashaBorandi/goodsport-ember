@@ -4,9 +4,8 @@ import { module, test } from 'qunit';
 
 module('SluggableMixin');
 
-// Replace this with your real tests.
-test('it works', function(assert) {
+test('it returns the id', function(assert) {
   var SluggableObject = Ember.Object.extend(SluggableMixin);
-  var subject = SluggableObject.create();
-  assert.ok(subject);
+  var subject = SluggableObject.create({id: 'slug'});
+  assert.ok(subject.get('id') === subject.get('slug'));
 });
