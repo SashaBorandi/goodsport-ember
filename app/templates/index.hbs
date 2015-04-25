@@ -1,4 +1,7 @@
 <div class="container">
+{{#if session.isAuthenticated}}
+  <h1>Welcome, {{session.user.account.username}}!</h1>
+{{else}}
   <form {{action 'register' on='submit'}} class="form-horizontal">
     <div class="form-group">
       <label for="email" class="col-sm-2">Email</label>
@@ -24,4 +27,5 @@
       </div>
     </div>
   </form>
+{{/if}}
 </div>
