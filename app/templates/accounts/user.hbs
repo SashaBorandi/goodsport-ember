@@ -1,0 +1,7 @@
+<p>User: {{model.owner.email}}</p>
+
+<ul>
+  {{#each model.competitions as |competition|}}
+    <li>{{competition.slug}}</li>
+  {{/each}}
+</ul>
