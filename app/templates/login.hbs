@@ -1,21 +1,19 @@
-<div class="container">
-  <form {{action 'authenticate' on='submit'}} class="form-horizontal">
-    <div class="form-group">
-      <label for="identification" class="col-sm-2">Email or Username</label>
-      <div class="col-sm-10">
-        {{input name="identification" value=identification class="form-control"}}
-      </div>
+<form {{action 'authenticate' on='submit'}} class="form-horizontal">
+  <div class="form-group">
+    <label for="identification" class="col-sm-2">Email or Username</label>
+    <div class="col-sm-10">
+      {{input name="identification" value=identification class="form-control"}}
     </div>
-    <div class="form-group">
-      <label for="type" class="col-sm-2">Password</label>
-      <div class="col-sm-10">
-        {{input name="password" type="password" value=password class="form-control"}}
-      </div>
+  </div>
+  <div class="form-group">
+    <label for="type" class="col-sm-2">Password</label>
+    <div class="col-sm-10">
+      {{input name="password" type="password" value=password class="form-control"}}
     </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Log in</button>
-      </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Log in</button>
     </div>
-  </form>
-</div>
+  </div>
+</form>

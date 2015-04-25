@@ -11,7 +11,9 @@
             Logged in as Edgar Lee <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Profile</a></li>
+            <li>
+              {{link-to 'Profile' 'accounts' session.user.account.username}}
+            </li>
             <li><a href="#" {{action 'invalidateSession'}}>Log out</a></li>
           </ul>
         </li>
@@ -22,4 +24,6 @@
   </div>
 </nav>
 
-{{outlet}}
+<div class="container">
+  {{outlet}}
+</div>
