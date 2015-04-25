@@ -1,7 +1,6 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 
 export default Ember.Mixin.create({
-  slug: function() {
-    return this.get('id');
-  }.property('id')
+  slug: DS.attr('string')
 });

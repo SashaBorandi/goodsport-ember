@@ -1,29 +1,8 @@
 import DS from 'ember-data';
 
-var Account = DS.Model.extend({
-  owner: DS.belongsTo('accountable', { polymorphic: true, async: true }),
+export default DS.Model.extend({
+  owner: DS.belongsTo('accountable', { polymorphic: true }),
   competitions: DS.hasMany('competition', { async: true }),
 
-  username: function() {
-    return this.get('id');
-  }.property('id')
+  username: DS.attr('string')
 });
-
-Account.reopenClass({
-  FIXTURES: [
-    {
-      id: 'hinshun',
-      owner: 1,
-      ownerType: 'user',
-      competitions: ['hinshun.championship']
-    },
-    {
-      id: 'utbc',
-      owner: 1,
-      ownerType: 'organization',
-      competitions: []
-    }
-  ]
-});
-
-export default Account;

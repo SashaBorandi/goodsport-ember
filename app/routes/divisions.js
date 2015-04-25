@@ -2,9 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function(params) {
-    var competitionSlug = this.modelFor('competitions').get('slug'),
-      slug = competitionSlug + '.' + params.division_slug;
+    return this.store.find('division', { slug: params.division_slug })
+      .then(function(divisions) {
+        var division = divisions.get('firstObject');
+        if (!division) {
+          throw new Error('No division with slug ' +
+                          params.division_slug + ' found');
+        }
 
-    return this.store.find('division', slug);
+        return division;
+      });
+  },
+
+  serialize: function(model) {
+    return { division_slug: model.get('slug') };
   }
 });

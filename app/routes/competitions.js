@@ -2,9 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function(params) {
-    var username = this.modelFor('accounts').get('username'),
-      slug = username + '.' + params.competition_slug;
+    return this.store.find('competition', { slug: params.competition_slug })
+      .then(function(competitions) {
+        var competition = competitions.get('firstObject');
+        if (!competition) {
+          throw new Error('No competition with slug ' +
+                          params.competition_slug + ' found');
+        }
 
-    return this.store.find('competition', slug);
+        return competition;
+      });
+  },
+
+  serialize: function(model) {
+    return { competition_slug: model.get('slug') };
   }
 });
