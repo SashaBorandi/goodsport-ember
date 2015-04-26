@@ -7,19 +7,58 @@ export default Ember.Controller.extend({
 
   onTitleChange: function() {
     if (!this.get('isSlugDirty')) {
-      this.set('slug', this.get('title').dasherize());
+      var leadingSpace = /^\s*/,
+        trailingSpace = /\s*$/,
+        greedyBad = /[^\w\s]/g,
+        greedySpace = /\s+/g;
+
+      var slug = this.get('model.title')
+        .replace(leadingSpace, '').replace(trailingSpace, '')
+        .replace(greedyBad, '').replace(greedySpace, ' ')
+        .dasherize();
+
+      this.set('model.slug', slug);
     }
-  }.observes('title'),
+  }.observes('model.title'),
+
+  currentAccount: function() {
+    return this.get('session.user.account');
+  }.property(),
+
+  accounts: function() {
+    return [{
+      username: this.get('currentAccount.username'),
+      account: this.get('currentAccount.id')
+    }];
+  }.property(),
 
   address: function() {
     var address = 'This %@ will live at brackety.co/%@/%@';
-    return address.fmt(this.get('type'), this.get('account'), this.get('slug'));
-  }.property('account', 'slug', 'type'),
+    return address.fmt(
+      this.get('model.type'),
+      this.get('currentAccount.username'),
+      this.get('model.slug')
+    );
+  }.property('model.slug', 'model.type'),
 
   actions: {
     editSlug: function(value) {
-      var isDirty = value !== this.get('title').dasherize();
+      var isDirty = value !== this.get('model.title').dasherize();
       this.set('isSlugDirty', isDirty);
+    },
+
+    create: function() {
+      var model = this.get('model');
+
+      this.store.find('account', this.get('account')).then(function(account) {
+        model.set('account', account);
+
+        model.save().then(function() {
+          alert('Success!');
+        }, function() {
+          alert('Failed to create');
+        });
+      });
     }
   }
 });

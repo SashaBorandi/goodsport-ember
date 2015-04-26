@@ -1,5 +1,12 @@
 {{#if session.isAuthenticated}}
-  <h1>Welcome, {{session.user.account.username}}!</h1>
+  <div class="jumbotron">
+    <h1>Welcome, {{session.user.account.username}}!</h1>
+    <p>Get started by creating a competition</p>
+    <p>
+      {{link-to "Create competition" "new" class="btn btn-primary"}}
+    </p>
+
+  </div>
 {{else}}
   <form {{action 'register' on='submit'}} class="form-horizontal">
     <div class="form-group">
