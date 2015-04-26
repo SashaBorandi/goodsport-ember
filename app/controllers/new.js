@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  types: ['tournament', 'league'],
+  types: ['Tournament', 'League'],
   isSlugDirty: false,
   title: '',
 
