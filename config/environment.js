@@ -36,7 +36,7 @@ module.exports = function(environment) {
     },
 
     'simple-auth-token': {
-      identificationField: 'email',
+      identificationField: 'identification',
       refreshLeeway: 600, // refresh 10 minutes before expiry
       timeFactor: 1000  // convert incoming seconds to milliseconds.
     }
@@ -44,8 +44,8 @@ module.exports = function(environment) {
 
   var api = ENV.apiHost + '/' + ENV.apiNamespace;
   ENV['simple-auth'].crossOriginWhitelist = [ENV.apiHost];
-  ENV['simple-auth-token'].serverTokenEndpoint = api + '/auth';
-  ENV['simple-auth-token'].serverTokenRefreshEndpoint = api + '/auth/refresh';
+  ENV['simple-auth-token'].serverTokenEndpoint = api + '/tokens';
+  ENV['simple-auth-token'].serverTokenRefreshEndpoint = api + '/tokens/refresh';
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
