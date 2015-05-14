@@ -3,7 +3,7 @@ import Sluggable from '../mixins/sluggable';
 
 export default DS.Model.extend(Sluggable, {
   account: DS.belongsTo('account'),
-  divisions: DS.hasMany('division'),
+  events: DS.hasMany('event'),
 
   title: DS.attr('string', { defaultValue: '' }),
   type: DS.attr('string')

@@ -8,7 +8,7 @@ moduleForModel('match', {
   needs: [
     'model:user',
     'model:competition',
-    'model:division'
+    'model:event'
   ]
 });
 

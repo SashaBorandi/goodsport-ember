@@ -12,7 +12,7 @@ Router.map(function() {
 
   this.resource('accounts', { path: '/:account_username' }, function() {
     this.resource('competitions', { path: '/:competition_slug' }, function() {
-      this.resource('divisions', { path: '/:division_slug' },  function() {
+      this.resource('events', { path: '/:event_slug' },  function() {
         this.resource('matches', function() {
         });
       });

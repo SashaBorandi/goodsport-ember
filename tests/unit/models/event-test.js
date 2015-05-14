@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForModel('division', {
+moduleForModel('event', {
   // Specify the other units that are required for this test.
   needs: [
     'model:organization',

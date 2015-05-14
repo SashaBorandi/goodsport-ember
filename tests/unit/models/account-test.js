@@ -8,7 +8,7 @@ moduleForModel('account', {
   needs: [
     'mixin:accountable',
     'model:competition',
-    'model:division'
+    'model:event'
   ]
 });
 

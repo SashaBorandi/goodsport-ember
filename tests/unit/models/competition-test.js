@@ -9,7 +9,7 @@ moduleForModel('competition', {
     'model:account',
     'mixin:accountable',
     'model:user',
-    'model:division',
+    'model:event',
     'model:match'
   ]
 });
