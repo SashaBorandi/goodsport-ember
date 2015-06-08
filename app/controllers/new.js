@@ -55,7 +55,7 @@ export default Ember.Controller.extend({
         competition.set('account', account);
 
         competition.save().then(function(competition) {
-          _this.transitionToRoute('competitions', account, competition);
+          _this.transitionToRoute('competition', account, competition);
         }, function() {
           alert('Failed to create');
         });

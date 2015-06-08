@@ -4,7 +4,7 @@ import Sluggable from '../mixins/sluggable';
 export default DS.Model.extend(Sluggable, {
   competition: DS.belongsTo('competition'),
   participants: DS.hasMany('user'),
-  matches: DS.hasMany('match'),
+  matches: DS.hasMany('match', { async: true }),
 
   title: DS.attr('string')
 });

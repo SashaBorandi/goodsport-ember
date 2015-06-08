@@ -9,16 +9,20 @@ Router.map(function() {
   this.route('login');
   this.route('search');
   this.route('new');
+  this.route('settings');
 
-  this.resource('accounts', { path: '/:account_username' }, function() {
-    this.resource('competitions', { path: '/:competition_slug' }, function() {
-      this.resource('events', { path: '/:event_slug' },  function() {
-        this.resource('matches', function() {
+  this.resource('account', { path: '/:account_username' }, function() {
+    this.resource('competition', { path: '/:competition_slug' }, function() {
+      this.route('new');
+      this.resource('events', function() {
+        this.route('show', { path: '/:event_slug' }, function() {
+          this.resource('matches', function() {
+            this.route('show', { path: '/:match_id' });
+          });
         });
       });
     });
 
-    // Organization Routes
     this.route('members');
   });
 });

@@ -12,13 +12,15 @@
           </a>
           <ul class="dropdown-menu" role="menu">
             <li>
-              {{link-to "Profile" "accounts" session.user.account.username}}
+              {{link-to "Profile" "account" session.user.account.username}}
             </li>
-            <li><a href="#" {{action 'invalidateSession'}}>Log out</a></li>
+            <li class="divider"></li>
+            <li>{{link-to "Settings" "settings"}}</li>
+            <li><a href="#" {{action "invalidateSession"}}>Log out</a></li>
           </ul>
         </li>
       {{else}}
-        <li><a href="#" {{action 'authenticateSession'}}>Log in</a></li>
+        <li><a href="#" {{action "authenticateSession"}}>Log in</a></li>
       {{/if}}
     </ul>
   </div>
