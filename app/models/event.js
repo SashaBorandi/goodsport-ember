@@ -6,5 +6,7 @@ export default DS.Model.extend(Sluggable, {
   participants: DS.hasMany('user'),
   matches: DS.hasMany('match', { async: true }),
 
-  title: DS.attr('string')
+  title: DS.attr('string', { defaultValue: '' }),
+  format: DS.attr('string'),
+  size: DS.attr('number')
 });
