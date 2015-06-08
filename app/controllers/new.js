@@ -48,13 +48,14 @@ export default Ember.Controller.extend({
     },
 
     create: function() {
-      var model = this.get('model');
+      var _this = this,
+        competition = this.get('model');
 
       this.store.find('account', this.get('account')).then(function(account) {
-        model.set('account', account);
+        competition.set('account', account);
 
-        model.save().then(function() {
-          alert('Success!');
+        competition.save().then(function(competition) {
+          _this.transitionToRoute('competitions', account, competition);
         }, function() {
           alert('Failed to create');
         });
