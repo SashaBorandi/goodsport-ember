@@ -31,11 +31,10 @@ export default Ember.Controller.extend({
     },
 
     create: function() {
-      var _this = this,
-        event = this.get('model');
+      var event = this.get('model');
 
-      event.save().then(function(event) {
-        _this.transitionToRoute('event', account, event);
+      event.save().then(function() {
+        alert('Success!');
       }, function() {
         alert('Failed to create');
       });
