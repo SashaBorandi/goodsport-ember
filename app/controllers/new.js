@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
   }.property(),
 
   address: function() {
-    var address = 'This %@ will live at brackety.co/%@/%@';
+    var address = 'This %@ will live at goodsport.io/%@/%@';
     return address.fmt(
       this.get('model.type'),
       this.get('currentAccount.username'),

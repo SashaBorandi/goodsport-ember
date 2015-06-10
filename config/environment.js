@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'brackety-ember',
+    modulePrefix: 'goodsport-ember',
     environment: environment,
     baseURL: '/',
     apiHost: process.env.API_HOST || 'http://localhost:3000',
